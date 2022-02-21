@@ -30,14 +30,6 @@ cd yolov5
 pip install -r requirements.txt  # install
 ```
 
-* **Install Python dependencies**
-    * 安裝本專案所需要的Python依賴項
-```
-git clone https://github.com/U07157135/ros2-yolov5.git  # clone
-cd ros2-yolov5
-pip install -r requirements.txt  # install
-```
-
 ### 無人機上的樹莓派
 
 * **Install ROS2**
@@ -91,10 +83,23 @@ python3 ~/dev_ws/src/<Package Name>/<Package Name>/get_frame.py
 ros2 run image_transport republish compressed in/compressed:=image_raw/compressed raw out:=image_raw/uncompressed
 ```
 
-## UI介面使用說明    
+## UI介面說明    
+![](https://i.imgur.com/oc7veKg.jpg)
 
+我們將UI介面分為四個部分，如上圖我們用紅色框框起來的為一部分並在上面標號。
+1. 紅框1為樹苺派的Raspberry Pi VR220 Camera取得影像透過ROS2傳遞影像資訊到本地端的電腦，最後再對影像的解析度做調整，最後再顯示再UI介面上。
+    
+2. 紅框2為影像數據，影像數據提供了影像的偵率、影像的解析度和影像顯示時間。
+
+3. 紅框3為物件偵測checkbox，當checkbox勾選時會使用YOLOv5偵測技術來進行物件偵測，我們使用YOLOv5的yolov5s模型來進行物件偵測，而物件偵測可以偵測的物件有[80種](https://cocodataset.org/#explore)像是人、腳踏車、摩托車、飛機等等的物件都可以偵測得到。
+4. 紅框4為畫面顯示開關按鈕，第一次開啟UI時顯示的影像會為雜訊畫面這表示畫面為關閉的，當按下第二次時為開啟畫面，開啟畫面後會顯示樹苺派的Raspberry Pi VR220 Camera取得的影像。
+    
 ## 成果展示
+    
+UI介面    
+    
+無人機上的魚眼相機支架和樹苺派支架
     
 ## ROS2架構
 
-
+![](https://github.com/U07157135/ros2-yolov5/blob/main/img/result.gif)
