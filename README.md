@@ -102,4 +102,4 @@ UI介面
     
 ## ROS2架構
 
-![](https://github.com/U07157135/ros2-yolov5/blob/main/img/result.gif)
+![](https://github.com/U07157135/ros2-yolov5/blob/main/img/ROS2.gif)
