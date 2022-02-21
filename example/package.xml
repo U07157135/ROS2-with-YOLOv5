@@ -11,10 +11,12 @@
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
-  <test_depend>rclpy</test_depend>
-  <test_depend>std_msgs</test_depend>
-  <test_depend>sensor_msgs</test_depend>
-  <test_depend>cv_bridge</test_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>opencv-python==4.3.0.36</exec_depend>
+  <exec_depend>PyQt5==5.15.6</exec_depend>
+
   <export>
     <build_type>ament_python</build_type>
   </export>
