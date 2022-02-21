@@ -1,6 +1,2 @@
 opencv-python==4.3.0.36
 PyQt5==5.15.6
-torch==1.10.1+cu113
-torchvision==0.11.2+cu113
-torchaudio==0.10.1+cu113 
---find-links https://download.pytorch.org/whl/cu113/torch_stable.html
