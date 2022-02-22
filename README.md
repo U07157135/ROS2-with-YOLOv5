@@ -8,7 +8,7 @@
     * 本專案在本地端電腦使用的ROS2版本為**foxy**
 
 * **Install ROS2-v4l2-camera Package**
-    * 安裝ROS2的ROS2-v4l2-camera包到本地端
+    * 安裝ROS2的ROS2-v4l2-camera包到本地端，版本為foxy
 ```
 sudo apt install ros-foxy-v4l2-camera
 ```
@@ -37,7 +37,7 @@ pip install -r requirements.txt  # install
     * 本專案在樹莓派使用的ROS2版本為**galactic**
 
 * **Install ROS2-v4l2-camera Package**
-    * 安裝ROS2的v4l2-camera包到樹莓派上
+    * 安裝ROS2的ROS2-v4l2-camera包到樹莓派上，版本為galactic
 ```
 sudo apt install ros-galactic-v4l2-camera
 ```
@@ -94,12 +94,23 @@ ros2 run image_transport republish compressed in/compressed:=image_raw/compresse
 3. 紅框3為物件偵測checkbox，當checkbox勾選時會使用YOLOv5偵測技術來進行物件偵測，我們使用YOLOv5的yolov5s模型來進行物件偵測，而物件偵測可以偵測的物件有[80種](https://cocodataset.org/#explore)像是人、腳踏車、摩托車、飛機等等的物件都可以偵測得到。
 4. 紅框4為畫面顯示開關按鈕，第一次開啟UI時顯示的影像會為雜訊畫面這表示畫面為關閉的，當按下第二次時為開啟畫面，開啟畫面後會顯示樹苺派的Raspberry Pi VR220 Camera取得的影像。
     
-## 成果展示
-    
-UI介面    
-    
-無人機上的魚眼相機支架和樹苺派支架
-    
 ## ROS2架構
 
 ![](https://github.com/U07157135/ros2-yolov5/blob/main/img/ROS2.gif)
+
+在無人機上以ROS2技術實現YOLOv5物件偵測使用了兩個裝置一個是樹苺派一個是本地端電腦，而我們在樹苺派和本地端各設置了兩個節點，在樹苺派上的兩個節點一個是負責錄製影像的節點另一個是負責壓縮影像，而在本地端的兩個節點一個是負責顯示影像的節點一個是負責解壓縮的節點，每個節點都是通過ROS2的Subscriber和Publisher來進行溝通，當Subscriber訂閱了Publisher之後每當Publisher將資料發布底下的Subscriber就會接收到來自Publisher發布的資料。
+    
+## YOLOv5物件偵測
+![](https://i.imgur.com/3TCFnxi.jpg)
+
+物件偵測我們使用比較熱門的YOLOv5，YOLOv5提供了許多開發環境和已經訓練好的權重模型，權重模型是使用MS COCO Dataset來進行訓練，它是一個Microsoft、Facebook等組織所提供的一個大型開源圖片數據集，而圖片數據集的種類有80多種，還有我們可以透過PyTorch Hub和PyTorch的API輕鬆的加載已經訓練完成的YOLOv5s模型和對圖像進行推理，這使得開發更加的容易。
+    
+## UI介面設計
+![](https://i.imgur.com/sALGlaT.png)
+
+UI是使用PyQt5來進行開發，搭配Qt Designer可以使得UI設計更視覺化可以簡單且直覺的繪製想要的功能，繪製完後再通過PyUIC這個工具將繪製好的.ui檔轉換成.py檔，接著再透過python import模組來呼叫UI介面的物件，最後再把UI介面的功能設計就完成了，目前只是初步簡單設計只有一些功能，未來可能會再新增。
+    
+## 無人機模具設計
+![](https://i.imgur.com/Vw2PUr7.png)
+
+為了可以在無人機上安裝樹莓派和樹莓派相機所以必須設計可以用來安裝樹莓派和樹梅派相機的模具，我們使用FreeCAD來進行模具的繪製，對於設計要符合無人機機身的模具和在不擋住無人機的鏡頭的同事要保持樹莓派相機的穩定我們是花了數個月才解決，由於無人機上有許多不規則的形狀在設計時只能大概猜測要印的模具大小，透過不斷嘗試和失敗最後終於印製符合機身的模具。
