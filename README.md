@@ -8,7 +8,7 @@
     * 本專案在本地端電腦使用的ROS2版本為**foxy**
 
 * **Install ROS2-v4l2-camera Package**
-    * 安裝ROS2的ROS2-v4l2-camera包到本地端，版本為foxy
+    * 安裝ROS2的[ROS2-v4l2-camera](https://index.ros.org/r/v4l2_camera/)包到本地端，版本為foxy
 ```
 sudo apt install ros-foxy-v4l2-camera
 ```
@@ -37,7 +37,7 @@ pip install -r requirements.txt  # install
     * 本專案在樹莓派使用的ROS2版本為**galactic**
 
 * **Install ROS2-v4l2-camera Package**
-    * 安裝ROS2的ROS2-v4l2-camera包到樹莓派上，版本為galactic
+    * 安裝ROS2的[ROS2-v4l2-camera](https://index.ros.org/r/v4l2_camera/)包到樹莓派上，版本為galactic
 ```
 sudo apt install ros-galactic-v4l2-camera
 ```
@@ -47,11 +47,11 @@ sudo apt install ros-galactic-v4l2-camera
 ```
 mkdir -p ~/dev_ws/src && cd ~/dev_ws/src
 ```
-2. 在工作目錄建立ROS2套件，<Package Name>為ROS2包的名稱
+2. 在工作目錄建立ROS2套件，&lt;Package Name&gt;為ROS2包的名稱
 ```
 ros2 pkg create --build-type ament_python <Package Name>
 ```
-3. 將本專案中的example資料夾內的檔案複製至./<Package Name>/<Package Name>下
+3. 將本專案中的example資料夾內的檔案複製至./&lt;Package Name&gt;/&lt;Package Name&gt;下
 ```
 cd ~
 git clone https://github.com/U07157135/ros2-yolov5.git
@@ -72,7 +72,7 @@ colcon build
 ros2 run image_transport republish compressed in/compressed:=image_raw/compressed raw out:=image_raw/uncompressed
 ```
 * 顯示影像節點啟動方式  
-<Package Name>為ROS2包的名稱
+&lt;Package Name&gt;為ROS2包的名稱
 ```
 python3 ~/dev_ws/src/<Package Name>/<Package Name>/get_frame.py
 ```
@@ -82,6 +82,7 @@ python3 ~/dev_ws/src/<Package Name>/<Package Name>/get_frame.py
 ```
 ros2 run image_transport republish compressed in/compressed:=image_raw/compressed raw out:=image_raw/uncompressed
 ```
+
 
 ## UI介面說明    
 ![](https://i.imgur.com/oc7veKg.jpg)
@@ -104,8 +105,9 @@ ros2 run image_transport republish compressed in/compressed:=image_raw/compresse
 ![](https://i.imgur.com/3TCFnxi.jpg)
 
 物件偵測我們使用比較熱門的YOLOv5，YOLOv5提供了許多開發環境和已經訓練好的權重模型，權重模型是使用MS COCO Dataset來進行訓練，它是一個Microsoft、Facebook等組織所提供的一個大型開源圖片數據集，而圖片數據集的種類有80多種，還有我們可以透過PyTorch Hub和PyTorch的API輕鬆的加載已經訓練完成的YOLOv5s模型和對圖像進行推理，這使得開發更加的容易。
-    
-## UI介面設計
+
+
+## UI介面設計  
 ![](https://i.imgur.com/sALGlaT.png)
 
 UI是使用PyQt5來進行開發，搭配Qt Designer可以使得UI設計更視覺化可以簡單且直覺的繪製想要的功能，繪製完後再通過PyUIC這個工具將繪製好的.ui檔轉換成.py檔，接著再透過python import模組來呼叫UI介面的物件，最後再把UI介面的功能設計就完成了，目前只是初步簡單設計只有一些功能，未來可能會再新增。
