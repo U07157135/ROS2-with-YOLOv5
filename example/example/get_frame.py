@@ -17,6 +17,8 @@ import torch
 import numpy as np
 from threading import Thread
 
+from Moildev import Moildev
+
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -29,7 +31,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.start_count_time = False
 
         self.stream_video_thread = StreamVideoThread()
-        self.stream_video_thread.img.connect(self.show_frame)
+        self.stream_video_thread.img_0.connect(self.show_frame_0)
+        self.stream_video_thread.img_1.connect(self.show_frame_1)
         self.stream_video_thread.fps.connect(self.update_fps)
         self.stream_video_thread.start()
 
@@ -80,7 +83,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 m = 0
             time.sleep(1)
 
-    def show_frame(self,img):
+    def show_frame_0(self,img):
         max_width = 500
         max_heigh = 500
         if self.camera:
@@ -109,17 +112,52 @@ class MainWindow(QtWidgets.QMainWindow):
         img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)    
         img = QImage(img,width,heigh,3*width,QImage.Format_RGB888)    
         self.ui.resultion_value.setText(f"{width}X{heigh}")
-        self.ui.view_label.setGeometry(100,100,width,heigh)
+        self.ui.view_label.setGeometry(10,10,width,heigh)
         self.ui.view_label.setPixmap(QPixmap.fromImage(img))
+
+    def show_frame_1(self,img):
+        max_width = 500
+        max_heigh = 500
+        if self.camera:
+            heigh, width, _ = img.shape
+            if self.detect:
+                img = self.model(img)
+                img = img.render()[0]
+
+            if width <= max_width and heigh <= max_heigh:
+                pass
+            elif width>heigh:
+                scale = 1.0*width/max_width
+                width = int(width/scale)
+                heigh = int(heigh/scale)
+            elif width<heigh:
+                scale = 1.0*heigh/max_heigh
+                width = int(width/scale)
+                heigh = int(heigh/scale)
+
+            img = cv2.resize(img,(width,heigh))
+        else :
+            width = max_width
+            heigh = max_heigh
+            img = np.random.randint(255, size=(width, heigh,3),dtype=np.uint8)
+
+        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)    
+        img = QImage(img,width,heigh,3*width,QImage.Format_RGB888)    
+        # self.ui.resultion_value.setText(f"{width}X{heigh}")
+        self.ui.view_label_2.setGeometry(10,10,width,heigh)
+        self.ui.view_label_2.setPixmap(QPixmap.fromImage(img))
 
     
 class StreamVideoThread(QThread):
-    img = QtCore.pyqtSignal(np.ndarray) 
+    img_0 = QtCore.pyqtSignal(np.ndarray) 
+    img_1 = QtCore.pyqtSignal(np.ndarray) 
     fps = QtCore.pyqtSignal(int) 
 
     def __init__(self,*args,**kwargs):
         super(StreamVideoThread, self).__init__(*args,**kwargs)
         rclpy.init()
+        self.moildev = Moildev("Parameter_Ethaniya_VR220.json")
+        self.alpha, self.beta = self.moildev.getAlphaBeta(900, 0, 1)
         self.get_frame_node = GetFrameNode()
         exe = SingleThreadedExecutor()
         exe.add_node(self.get_frame_node)
@@ -130,9 +168,15 @@ class StreamVideoThread(QThread):
         while True:
             img = self.get_frame_node.get_frames()
             fps = self.get_frame_node.fps
-            self.img.emit(img)
+            self.img_0.emit(img)
+            self.img_1.emit(self.img_convert(img))
             self.fps.emit(fps)
             time.sleep(0.1)
+            
+    def img_convert(self, img):
+        img = self.moildev.anypoint(img, self.alpha,self.beta,4, 1)
+        img = cv2.resize(img, (800, 600), interpolation=cv2.INTER_AREA)
+        return img
 
 
 class GetFrameNode(Node):

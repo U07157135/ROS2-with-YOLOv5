@@ -1,0 +1,17 @@
+{
+  "cameraName": "entaniya_pi",
+  "cameraSensorWidth": 1.2,
+  "cameraSensorHeight": 1.2,
+  "iCx": 1296,
+  "iCy": 972,
+  "ratio": 1.0,
+  "imageWidth": 2592,
+  "imageHeight": 1944,
+  "calibrationRatio": 4.05,
+  "parameter0": 0,
+  "parameter1": 0,
+ "parameter2": 0,
+  "parameter3": -17.539,
+  "parameter4": 31.802,
+  "parameter5": 133.39
+}
