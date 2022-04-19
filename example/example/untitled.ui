@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>897</width>
-    <height>649</height>
+    <width>664</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,8 @@ border-color: rgb(255,0,0)</string>
    <widget class="QPushButton" name="camera_btn">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>290</y>
+      <x>350</x>
+      <y>540</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -37,8 +37,8 @@ border-color: rgb(255,0,0)</string>
    <widget class="QCheckBox" name="detect_checkbox">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>250</y>
+      <x>370</x>
+      <y>510</y>
       <width>92</width>
       <height>23</height>
      </rect>
@@ -53,10 +53,10 @@ border-color: rgb(255,0,0)</string>
    <widget class="QLabel" name="view_label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>100</y>
-      <width>500</width>
-      <height>400</height>
+      <x>10</x>
+      <y>10</y>
+      <width>640</width>
+      <height>480</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -72,8 +72,8 @@ border-color: rgb(255,0,0)</string>
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>170</y>
+      <x>150</x>
+      <y>510</y>
       <width>160</width>
       <height>71</height>
      </rect>
@@ -96,7 +96,7 @@ border-color: rgb(255,0,0)</string>
      <item row="1" column="0">
       <widget class="QLabel" name="resultion_text">
        <property name="text">
-        <string>resultion</string>
+        <string>Resultion</string>
        </property>
       </widget>
      </item>
@@ -121,6 +121,20 @@ border-color: rgb(255,0,0)</string>
        </property>
       </widget>
      </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="delay_text">
+       <property name="text">
+        <string>Delay</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="delay_value">
+       <property name="text">
+        <string>0ms</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -129,8 +143,8 @@ border-color: rgb(255,0,0)</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>897</width>
-     <height>22</height>
+     <width>664</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -80,7 +80,7 @@ python3 ~/dev_ws/src/<Package Name>/<Package Name>/get_frame.py
 ### 無人機上的樹梅派
 無人機擷取影像的節點和壓縮影像的節點為同個包所以只需開起壓縮影像的節點就可以了。
 ```
-ros2 run image_transport republish compressed in/compressed:=image_raw/compressed raw out:=image_raw/uncompressed
+ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:=[480,640]
 ```
 
 
