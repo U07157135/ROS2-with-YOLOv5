@@ -85,7 +85,8 @@ ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:=[480,640]
 
 
 ## UI介面說明    
-![](https://i.imgur.com/oc7veKg.jpg)
+![](https://i.imgur.com/N22Zsnb.png)
+
 
 我們將UI介面分為四個部分，如上圖我們用紅色框框起來的為一部分並在上面標號。
 1. 紅框1為樹苺派的Raspberry Pi VR220 Camera取得影像透過ROS2傳遞影像資訊到本地端的電腦，最後再對影像的解析度做調整，最後再顯示再UI介面上。
@@ -108,7 +109,8 @@ ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:=[480,640]
 
 
 ## UI介面設計  
-![](https://i.imgur.com/sALGlaT.png)
+![](https://i.imgur.com/aXAjnWc.png)
+
 
 UI是使用PyQt5來進行開發，搭配Qt Designer可以使得UI設計更視覺化可以簡單且直覺的繪製想要的功能，繪製完後再通過PyUIC這個工具將繪製好的.ui檔轉換成.py檔，接著再透過python import模組來呼叫UI介面的物件，最後再把UI介面的功能設計就完成了，目前只是初步簡單設計只有一些功能，未來可能會再新增。
     
