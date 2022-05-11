@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ros</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -24,7 +24,7 @@ border-color: rgb(255,0,0)</string>
    <widget class="QPushButton" name="camera_btn">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>210</x>
       <y>540</y>
       <width>89</width>
       <height>25</height>
@@ -37,7 +37,7 @@ border-color: rgb(255,0,0)</string>
    <widget class="QCheckBox" name="detect_checkbox">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>230</x>
       <y>510</y>
       <width>92</width>
       <height>23</height>
@@ -72,7 +72,7 @@ border-color: rgb(255,0,0)</string>
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>10</x>
       <y>510</y>
       <width>160</width>
       <height>71</height>
