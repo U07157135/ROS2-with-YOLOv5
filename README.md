@@ -118,3 +118,16 @@ UI是使用PyQt5來進行開發，搭配Qt Designer可以使得UI設計更視覺
 ![](https://i.imgur.com/Vw2PUr7.png)
 
 為了可以在無人機上安裝樹莓派和樹莓派相機所以必須設計可以用來安裝樹莓派和樹梅派相機的模具，我們使用FreeCAD來進行模具的繪製，對於設計要符合無人機機身的模具和在不擋住無人機的鏡頭的同事要保持樹莓派相機的穩定我們是花了數個月才解決，由於無人機上有許多不規則的形狀在設計時只能大概猜測要印的模具大小，透過不斷嘗試和失敗最後終於印製符合機身的模具。
+
+## 結果
+
+![](https://i.imgur.com/luBDBjM.jpg)
+
+![](https://i.imgur.com/aXAjnWc.png)
+
+## 實際操作
+
+![](https://i.imgur.com/xj80ZDe.png)
+
+![](https://i.imgur.com/v1rkGsJ.png)
+
